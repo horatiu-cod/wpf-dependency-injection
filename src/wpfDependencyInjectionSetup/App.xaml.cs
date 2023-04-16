@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Microsoft.Extensions.Hosting;
+using System.Windows;
 
 namespace wpfDependencyInjectionSetup;
 
@@ -7,4 +8,5 @@ namespace wpfDependencyInjectionSetup;
 /// </summary>
 public partial class App : Application
 {
+    public static IHost 
 }
