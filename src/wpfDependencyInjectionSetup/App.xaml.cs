@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
+using wpfDependencyInjectionSetup.Helpers.Extensions;
 
 namespace wpfDependencyInjectionSetup;
 
@@ -21,6 +22,8 @@ public partial class App : Application
             {
                 // Register services
                 services.AddSingleton<MainWindow>();
+                //Regidter services for TForms
+                //services.AddFormFactory<TForm>();
             })
             .Build(); 
     }
