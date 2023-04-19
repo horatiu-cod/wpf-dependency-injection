@@ -3,6 +3,7 @@ using System;
 using wpfDependencyInjectionSetup.Helpers.Abstractions;
 using wpfDependencyInjectionSetup.Helpers.Factories;
 using wpfDependencyInjectionSetup.Helpers.Services;
+using wpfDependencyInjectionSetup.Helpers.Stores;
 using wpfDependencyInjectionSetup.ViewModels;
 
 namespace wpfDependencyInjectionSetup.Helpers.Extensions;
@@ -15,6 +16,8 @@ internal static class ServiceExtension
         //Regidter services for TForms
         services.AddFormFactory<ViewModelBase>();
         services.AddSingleton<INavigationService, NavigationService>();
+        services.AddSingleton<MainViewModel>();
+        services.AddTransient<NavigationStore>(s => new NavigationStore { CurrentViewModel=new ShellViewModel()});
     }
     // Factory Pattern
     internal static void AddFormFactory<TForm>(this IServiceCollection services)
