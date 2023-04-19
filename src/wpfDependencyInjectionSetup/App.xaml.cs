@@ -21,9 +21,8 @@ public partial class App : Application
             .ConfigureServices((hostContext, services) =>
             {
                 // Register services
-                services.AddSingleton<MainWindow>();
-                //Regidter services for TForms
-                //services.AddFormFactory<TForm>();
+                services.AddServices();
+                //services.AddSingleton<MainWindow>();
             })
             .Build(); 
     }
