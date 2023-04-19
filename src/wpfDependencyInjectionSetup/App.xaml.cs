@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Hosting;
 using System.Windows;
 using wpfDependencyInjectionSetup.Helpers.Extensions;
+using wpfDependencyInjectionSetup.Helpers.Stores;
+using wpfDependencyInjectionSetup.ViewModels;
 
 namespace wpfDependencyInjectionSetup;
 
@@ -22,16 +24,18 @@ public partial class App : Application
             {
                 // Register services
                 services.AddServices();
-                //services.AddSingleton<MainWindow>();
-            })
+             })
             .Build(); 
     }
     protected override async void OnStartup(StartupEventArgs e)
     {
+
         // Override the Startup method
         await AppHost!.StartAsync();
         // Get Service for MainWindow
         var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
+        startupForm.DataContext = AppHost.Services.GetRequiredService<MainViewModel>();        
+
         startupForm.Show();
 
         base.OnStartup(e);
